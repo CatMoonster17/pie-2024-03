@@ -218,6 +218,40 @@
 					be played).
 
 				</footer>
+				
+				 <footer class="major container medium">
+				                    <h2>Additional</h2>
+				                    <p>Our initial goal was to use the Raspberry Pi camera to implement pose estimation and movement tracking, enabling the turret to interact with users proactively. For example, we wanted the turret to detect a waving motion and respond with a greeting. Another idea was to track head poses and light up corresponding LEDs based on the head’s position in the camera frame, simulating eye tracking. Since the turret is a single-eyed entity, we envisioned a cluster of red LED lights forming a circular surface. Only one LED light up each time depending on where the head pose is to mimic motion tracking through “eye movement.”</p>
+				
+				                    <p>Additionally, we planned to include gesture recognition for controlling wing movements. Extending an arm to the left or right would cause the turret’s wings to extend in the same direction. While this functionality was written in code, it was ultimately not implemented.</p>
+				                </footer>
+				
+				                <footer class="major container medium">
+				                    <h2>Issues</h2>
+				
+				                    <h3>Camera Setup Problems:</h3>
+				                    <p>After acquiring the Raspberry Pi and its camera, we began by setting up and testing the camera. The initial test code worked successfully during our first session. However, in our next meeting, we updated the system, which led to persistent version conflicts with the picamera library. Despite numerous meetings, consultations with CAs, and guidance from the teaching team, we were unable to resolve the issue.</p>
+				
+				                    <h3>Pivoting to Alternative Solutions:</h3>
+				                    <p>After the Sprint 2 project review, we decided to temporarily set the camera issue aside and focus on coding the motion detection logic using a standard computer camera. Unfortunately, we encountered CUDA driver issues. We ended up using a friend’s computer for coding and debugging since she was also working on pose estimation. This workaround introduced its own challenges, as we couldn’t work on the project independently and had to coordinate schedules, which was frustrating and inefficient.</p>
+				
+				                    <h3>Debugging Challenges:</h3>
+				                    <p>One major lesson we learned was the importance of understanding how a library works before using it. For instance, while debugging the wave detection logic, we were puzzled because individual components functioned correctly, and the printed angle lists appeared reasonable. Yet, the overall detection performed poorly.</p>
+				
+				                    <p>Eventually, we discovered that the wave detection logic was only triggered when the forearm was lower than the upper arm. The root cause was a misunderstanding of the Mediapipe library’s coordinate system. We assumed the wrist’s y-coordinate had to be greater than the elbow’s y-coordinate to activate the detection logic. However, Mediapipe defines smaller y-values as higher positions and larger y-values as lower positions. The issue was resolved by simply flipping the comparison sign—a fix that took us days to figure out.</p>
+				
+				                    <p>It worked on the computer’s camera!</p>
+				
+				                    <p>Using mediapipe library, we were able to accurately detect the waving motion, head pose, and arm gesture. It was time to tackle the issue of implementing it on raspberry pi and the picamera.</p>
+				
+				                    <h3>Revisiting the Camera Issue:</h3>
+				                    <p>With limited time and multiple final projects, we revisited the picamera issue. Although we were advised to pivot to a USB-connected camera library, we decided against it due to the late stage of the project. After trouble shooting for another day, we decided that we will not be implementing this part of the function onto our final product.</p>
+				                </footer>
+				
+				                <footer class="major container medium">
+				                    <h2>Reflections</h2>
+				                    <p>This project underscored the importance of understanding the tools and libraries you’re working with and the need for flexibility when encountering setbacks. It was a valuable learning experience, even if the final implementation fell short of our initial vision.</p>
+				
 
 				<footer class="major container medium">
 					<h2>Dependencies</h3>
